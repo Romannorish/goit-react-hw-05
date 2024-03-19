@@ -1,9 +1,23 @@
+import AboutPage from "./AboutPage/AboutPage"
 import "./App.css"
+import HomePage from "./HomePage/HomePage"
+import ProductPage from "./ProductPage/ProductPage"
 
 function App() {
   return (
     <>
-      <div>component</div>
+      <header>
+        <nav>
+          <ul className="list">
+            <li>Home</li>
+            <li>About</li>
+            <li>Product</li>
+          </ul>
+        </nav>
+      </header>
+      <HomePage />
+      <AboutPage />
+      <ProductPage />
     </>
   )
 }
