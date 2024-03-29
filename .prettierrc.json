@@ -1,6 +1,6 @@
 {
   "bracketSpacing": false,
-  "semi": false,
+  "semi": true,
   "printWidth": 100,
   "trailingComma": "es5"
 }
