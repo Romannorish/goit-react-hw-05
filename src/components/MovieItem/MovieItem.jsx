@@ -1,6 +1,6 @@
 import css from "./MovieItem.module.css";
 
-export default function MovieItem({film: {title, poster_path, release_date, vote_average}}) {
+export default function MovieItem({movie: {title, poster_path, release_date, vote_average}}) {
   const rating = vote_average.toFixed(1);
   return (
     <>

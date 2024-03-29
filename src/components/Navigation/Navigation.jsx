@@ -9,7 +9,7 @@ export default function Navigation() {
           <NavLink className={css.link} to="/">
             Home
           </NavLink>
-          <NavLink className={css.link} to="/MoviesPage">
+          <NavLink className={css.link} to="/movies">
             Movies
           </NavLink>
         </ul>

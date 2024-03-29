@@ -6,7 +6,7 @@ import css from "./HomePage.module.css";
 
 export default function HomePage() {
   const [loading, setIsloading] = useState(false);
-  const [films, setFilms] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function fetchFilms() {
@@ -14,7 +14,7 @@ export default function HomePage() {
         setIsloading(true);
         const res = await trendReq();
         console.log(res);
-        setFilms(res);
+        setMovies(res);
       } catch (error) {
         console.log(error);
       } finally {
@@ -28,7 +28,7 @@ export default function HomePage() {
     <main>
       <h1 className={css.hometitle}>Trending today</h1>
       {loading && <Loader />}
-      {films && <MovieList films={films} />}
+      {movies && movies.length > 0 && <MovieList movies={movies} />}
     </main>
   );
 }

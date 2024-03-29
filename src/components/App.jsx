@@ -18,10 +18,10 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/MoviesPage" element={<MoviesPage />} />
-          <Route path="/MoviesPage:MoviesPageid" element={<MovieDetailsPage />}>
-            <Route path="cast" element={<MovieCast />}></Route>
-            <Route path="reviews" element={<MovieReviews />}></Route>
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
