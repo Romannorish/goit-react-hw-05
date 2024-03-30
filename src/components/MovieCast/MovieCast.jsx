@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import nophoto from "../../assets/nophoto.jpg";
 import css from "./MovieCast.module.css";
 import Loader from "../Loader/Loader";
-import ErrorMessage from "../ErrorMessege/ErrorMessege";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function MovieCast() {
   const [cast, setCast] = useState(null);
@@ -36,7 +36,8 @@ export default function MovieCast() {
     <>
       {loading && <Loader />}
       {error && <ErrorMessage error={error} />}
-      {cast &&
+      {Array.isArray(cast) &&
+        cast &&
         cast.map((actor) => {
           return (
             <li key={actor.id} className={css.actor}>

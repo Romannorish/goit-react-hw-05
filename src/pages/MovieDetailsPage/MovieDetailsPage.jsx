@@ -1,13 +1,18 @@
-import {Suspense, useEffect, useRef, useState} from "react";
+import {Suspense, lazy, useEffect, useRef, useState} from "react";
 import {movieDetailsReq} from "../../Servises API/API";
 import {Link, NavLink, Route, Routes, useLocation, useParams} from "react-router-dom";
 import toast from "react-hot-toast";
 import clsx from "clsx";
 import css from "./MovieDetailsPage.module.css";
-import Loader from "../../components/Loader/Loader";
-import ErrorMessege from "../../components/ErrorMessege/ErrorMessege";
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
+// import Loader from "../../components/Loader/Loader";
+// import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+// import MovieCast from "../../components/MovieCast/MovieCast";
+// import MovieReviews from "../../components/MovieReviews/MovieReviews";
+
+const MovieReviews = lazy(() => import("../../components/MovieReviews/MovieReviews"));
+const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
+const ErrorMessage = lazy(() => import("../../components/ErrorMessage/ErrorMessage"));
+const Loader = lazy(() => import("../../components/Loader/Loader"));
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -15,7 +20,7 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(null);
   const {movieId} = useParams();
   const location = useLocation();
-  const backLinkRef = useRef(location.state?.from ?? "/movies");
+  const backLinkRef = useRef(location.state?.from ?? "/");
   useEffect(() => {
     if (!movieId) return;
     const getMovieData = async () => {
@@ -39,10 +44,14 @@ export default function MovieDetailsPage() {
   return (
     <div>
       {loading && <Loader />}
-      {error && <ErrorMessege error={error} />}
+      {error && <ErrorMessage error={error} />}
       {movie && (
-        <div>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie poster" />
+        <div className={css.content}>
+          <img
+            width={400}
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt="movie poster"
+          />
           <div className={css.description}>
             <h2>{movie.title}</h2>
             <p>

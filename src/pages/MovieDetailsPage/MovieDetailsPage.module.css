@@ -13,7 +13,7 @@
   position: relative;
   font-size: 34px;
   padding: 0px 20px;
-  color: rgb(230, 230, 59);
+  color: rgb(13, 82, 172);
 }
 
 .link::after {
@@ -33,9 +33,13 @@
 }
 
 .active {
-  color: white;
+  color: rgb(236, 217, 6);
 }
 
 .link {
   text-decoration: none;
+}
+
+.content {
+  justify-content: center;
 }
