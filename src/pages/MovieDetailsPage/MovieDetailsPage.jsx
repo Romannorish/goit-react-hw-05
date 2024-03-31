@@ -4,10 +4,6 @@ import {Link, NavLink, Route, Routes, useLocation, useParams} from "react-router
 import toast from "react-hot-toast";
 import clsx from "clsx";
 import css from "./MovieDetailsPage.module.css";
-// import Loader from "../../components/Loader/Loader";
-// import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-// import MovieCast from "../../components/MovieCast/MovieCast";
-// import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 const MovieReviews = lazy(() => import("../../components/MovieReviews/MovieReviews"));
 const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
@@ -20,7 +16,7 @@ export default function MovieDetailsPage() {
   const [error, setError] = useState(null);
   const {movieId} = useParams();
   const location = useLocation();
-  const backLinkRef = useRef(location.state?.from ?? "/");
+  const backLinkRef = useRef(location.state?.from ?? "/movies");
   useEffect(() => {
     if (!movieId) return;
     const getMovieData = async () => {
@@ -46,9 +42,10 @@ export default function MovieDetailsPage() {
       {loading && <Loader />}
       {error && <ErrorMessage error={error} />}
       {movie && (
-        <div className={css.content}>
+        <div className={css.container}>
           <img
-            width={400}
+            className={css.image}
+            width={350}
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt="movie poster"
           />
@@ -82,7 +79,7 @@ export default function MovieDetailsPage() {
           </div>
         </div>
       )}
-      <div>
+      <div className={css.contentLink}>
         <NavLink to="cast" state={{from: backLinkRef.current}} className={buildLinkClass}>
           Cast
         </NavLink>

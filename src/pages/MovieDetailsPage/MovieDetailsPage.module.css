@@ -7,6 +7,11 @@
   margin-right: auto;
   margin-left: auto;
 }
+.contentLink {
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
 
 .link {
   text-decoration: none;
@@ -40,6 +45,11 @@
   text-decoration: none;
 }
 
-.content {
-  justify-content: center;
+.image {
+  display: block;
+  margin: 0 auto;
+}
+
+.container {
+  margin-top: 20px;
 }

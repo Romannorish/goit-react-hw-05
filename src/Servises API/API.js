@@ -37,13 +37,13 @@ const movieDetailsReq = async (movieId) => {
 const movieCastReq = async (movieId) => {
   const res = await axios.get(`movie/${movieId}/credits`, options)
 
-  return res.data
+  return res.data.cast
 }
 
 const movieReviewsReq = async (movieId) => {
   const res = await axios.get(`movie/${movieId}/reviews`, options)
 
-  return res.data
+  return res.data.results
 }
 
 export { 
